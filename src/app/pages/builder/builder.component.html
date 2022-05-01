@@ -1,0 +1,67 @@
+<mat-grid-list cols="10" rowHeight="1:8">
+  <mat-grid-tile colspan="4" class="main">
+    <p>builder works!</p>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="6">
+    <div class="side">
+      <div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Processor</mat-label>
+            <mat-select #cpu>
+              <mat-option *ngFor="let obj of cpuObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Motherboard</mat-label>
+            <mat-select #mobo>
+              <mat-option *ngFor="let obj of moboObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Memory (RAM)</mat-label>
+            <mat-select #ram>
+              <mat-option *ngFor="let obj of ramObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Video card</mat-label>
+            <mat-select #gpu>
+              <mat-option *ngFor="let obj of gpuObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Power supply</mat-label>
+            <mat-select #psu>
+              <mat-option *ngFor="let obj of psuObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Case</mat-label>
+            <mat-select #pccase>
+              <mat-option *ngFor="let obj of caseObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="partpicker">
+            <mat-label>Storage</mat-label>
+            <mat-select #storage>
+              <mat-option *ngFor="let obj of storageObjectInput" [value]="obj">{{obj.id}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
