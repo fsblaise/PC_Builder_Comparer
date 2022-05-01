@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pcbuilder-comparer": {
+      "hosting": {
+        "PCBuilder": [
+          "pcbuilder-comparer"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pcbuilder-comparer"
+  }
+}
