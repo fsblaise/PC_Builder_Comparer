@@ -1,6 +1,9 @@
-export interface Ram{
+import {Image} from "./Image";
+
+export interface Ram extends Image{
   id: string;
   imgid: string;
+  instance: 'ram'
   name: string;
   manufacturer: string;
   architechture: string;

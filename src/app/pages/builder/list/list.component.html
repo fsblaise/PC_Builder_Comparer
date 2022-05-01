@@ -1,0 +1,65 @@
+<div class="side">
+  <div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Processor</mat-label>
+        <mat-select #cpu (selectionChange)="reload()" [(ngModel)]="chosenCpu">
+          <mat-option *ngFor="let obj of cpuObjectInput" [value]="obj">{{obj.manufacturer + ' ' + obj.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Motherboard</mat-label>
+        <mat-select #mobo (selectionChange)="reload2()" [(ngModel)]="chosenMobo">
+          <mat-option *ngFor="let obj of moboObjectInput" [value]="obj">{{obj.manufacturer + ' ' + obj.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Memory (RAM)</mat-label>
+        <mat-select #ram (selectionChange)="reload3()" [(ngModel)]="chosenRam">
+          <mat-option *ngFor="let obj of ramObjectInput" [value]="obj">{{obj.manufacturer + ' ' + obj.name + ' 2*' + obj.size/2 + ' GB'}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Video card</mat-label>
+        <mat-select #gpu (selectionChange)="reload4()" [(ngModel)]="chosenGpu">
+          <mat-option *ngFor="let obj of gpuObjectInput" [value]="obj">{{obj.manufacturer + ' ' + obj.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Power supply</mat-label>
+        <mat-select #psu (selectionChange)="reload5()" [(ngModel)]="chosenPsu">
+          <mat-option *ngFor="let obj of psuObjectInput" [value]="obj">{{obj.manufacturer + ' ' + obj.name + ' ' + obj.wattage + 'W'}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Case</mat-label>
+        <mat-select #pccase (selectionChange)="reload6()" [(ngModel)]="chosenCase">
+          <mat-option *ngFor="let obj of caseObjectInput" [value]="obj">{{obj.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="partpicker">
+        <mat-label>Drive</mat-label>
+        <mat-select #storage (selectionChange)="reload7()" [(ngModel)]="chosenStorage">
+          <mat-option *ngFor="let obj of storageObjectInput" [value]="obj">{{obj.manufacturer + ' ' + obj.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <span>
+        <button mat-raised-button color="primary" (click)="build()" >Lessss gooo!</button>
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+mat-grid-list{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+div{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+img{
+  width: fit-content;
+  height: fit-content;
+  flex-shrink: 0;
+  margin-bottom: auto;
+  margin-top: auto;
+  margin-right: 20px;
+  margin-left: 20px;
+}

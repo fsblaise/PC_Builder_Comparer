@@ -1,15 +1,6 @@
-
-.main:before{
-  content: "";
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -9;
-  position: absolute;
+.main{
   background-image: url("../../../assets/blueprint_bg.png");
   background-repeat: repeat;
-  opacity: 0.4;
 }
 
 mat-select{
