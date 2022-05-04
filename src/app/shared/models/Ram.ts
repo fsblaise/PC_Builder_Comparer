@@ -3,7 +3,7 @@ import {Image} from "./Image";
 export interface Ram extends Image{
   id: string;
   imgid: string;
-  instance: 'ram'
+  typo: 'ram'
   name: string;
   manufacturer: string;
   architechture: string;

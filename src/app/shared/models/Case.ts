@@ -2,7 +2,7 @@ import {Image} from "./Image";
 
 export interface Case extends Image{
   id: string;
-  instance: 'case'
+  typo: 'case'
   imgid: string;
   name: string;
   form: string;
