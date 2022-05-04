@@ -1,1 +1,240 @@
-<p>comparator works!</p>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Comparator">
+    <div fxLayout="row" fxLayoutGap="16px" fxShow.lt-sm="false" fxShow.sm="false" fxLayoutAlign="center" class="grid">
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
+        <mat-form-field>
+          <mat-label>User's computer</mat-label>
+          <mat-select (selectionChange)="reload()" [(ngModel)]="chosenUserComputer">
+            <mat-option *ngFor="let obj of userComputerObject" [value]="obj">{{obj.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
+        <mat-form-field>
+          <mat-label>Computer 2</mat-label>
+          <mat-select (selectionChange)="reload2()" [(ngModel)]="chosenComputer">
+            <mat-option *ngFor="let obj of computerObject" [value]="obj">{{obj.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="16px" fxShow.gt-sm="false" fxLayoutAlign="center" class="grid">
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center">
+        <mat-form-field>
+          <mat-label>User's computer</mat-label>
+          <mat-select (selectionChange)="reload()" [(ngModel)]="chosenUserComputer">
+            <mat-option *ngFor="let obj of userComputerObject" [value]="obj">{{obj.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center">
+        <mat-form-field>
+          <mat-label>Computer 2</mat-label>
+          <mat-select (selectionChange)="reload2()" [(ngModel)]="chosenComputer">
+            <mat-option *ngFor="let obj of computerObject" [value]="obj">{{obj.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="button">
+      <span>
+        <button mat-raised-button color="primary" (click)="compare()">Lessss gooo!</button>
+      </span>
+    </div>
+
+    <div [ngSwitch]="relation" fxLayout="row" fxLayoutAlign="center">
+      <h1 *ngSwitchCase="'bigger'">The user's computer is better!</h1>
+      <h1 *ngSwitchCase="'smaller'">The other computer is better!</h1>
+      <h1 *ngSwitchCase="'equal'">These computers are almost equal/equal!</h1>
+    </div>
+    <div fxLayout="row" fxLayoutGap="32px" fxLayoutAlign="center">
+      <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center">
+        <mat-card *ngIf="userComputer[0] as obj">
+          <mat-card-title >{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            Cpu Benchmark Results:<br>
+            Framerate: {{obj.score}} FPS<br>
+            Cores: {{obj.cores}} <br>
+            Threads: {{obj.threads}} <br>
+            Clock: {{obj.clock}} GHz<br>
+            Socket: {{obj.socket}} <br>
+            Tdp: {{obj.tdp}} W <br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userComputer[1] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Motherboard Results:</h2>
+            Chipset: {{obj.chipset}} W<br>
+            Socket: {{obj.socket}}<br>
+            Ram type: {{obj.ramtype}}<br>
+            Pci-e: gen{{obj.pciegen}}<br>
+            Form factor: {{obj.form}}<br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userComputer[2] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Ram Benchmark Results:</h2>
+            Read/Write score: {{obj.score}} Points<br>
+            Architecture: {{obj.architechture}} <br>
+            Size: {{obj.size}} GB <br>
+            Clock: {{obj.clock}} GHz<br>
+            Cas: CL {{obj.cas}} <br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userComputer[3] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Gpu Benchmark Results:</h2>
+            Framerate: {{obj.score}} FPS<br>
+            Vram: {{obj.vram}} GB <br>
+            Pci-e: gen{{obj.pciegen}} <br>
+            Tdp: {{obj.tdp}} W <br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userComputer[4] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Power Supply Results:</h2>
+            Wattage: {{obj.wattage}} W<br>
+            Efficiency: {{obj.efficiency}}<br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userComputer[5] as obj">
+          <mat-card-title>{{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Computer Case Results:</h2>
+            Form factor: {{obj.form}}<br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="userComputer[6] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Storage Benchmark Results:</h2>
+            Size: {{obj.size}} GB<br>
+            Type: {{obj.type}}<br>
+            Grade: {{obj.grade}}<br>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+
+      <div fxFlex="30%" fxLayout="column" fxLayoutAlign="center">
+        <mat-card *ngIf="otherComputer[0] as obj">
+          <mat-card-title >{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            Cpu Benchmark Results:<br>
+            Framerate: {{obj.score}} FPS<br>
+            Cores: {{obj.cores}} <br>
+            Threads: {{obj.threads}} <br>
+            Clock: {{obj.clock}} GHz<br>
+            Socket: {{obj.socket}} <br>
+            Tdp: {{obj.tdp}} W <br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="otherComputer[1] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Motherboard Results:</h2>
+            Chipset: {{obj.chipset}} W<br>
+            Socket: {{obj.socket}}<br>
+            Ram type: {{obj.ramtype}}<br>
+            Pci-e: gen{{obj.pciegen}}<br>
+            Form factor: {{obj.form}}<br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="otherComputer[2] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Ram Benchmark Results:</h2>
+            Read/Write score: {{obj.score}} Points<br>
+            Architecture: {{obj.architechture}} <br>
+            Size: {{obj.size}} GB <br>
+            Clock: {{obj.clock}} GHz<br>
+            Cas: CL {{obj.cas}} <br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="otherComputer[3] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Gpu Benchmark Results:</h2>
+            Framerate: {{obj.score}} FPS<br>
+            Vram: {{obj.vram}} GB <br>
+            Pci-e: gen{{obj.pciegen}} <br>
+            Tdp: {{obj.tdp}} W <br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="otherComputer[4] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Power Supply Results:</h2>
+            Wattage: {{obj.wattage}} W<br>
+            Efficiency: {{obj.efficiency}}<br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="otherComputer[5] as obj">
+          <mat-card-title>{{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Computer Case Results:</h2>
+            Form factor: {{obj.form}}<br>
+          </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="otherComputer[6] as obj">
+          <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+          <mat-card-content>
+            <h2>Storage Benchmark Results:</h2>
+            Size: {{obj.size}} GB<br>
+            Type: {{obj.type}}<br>
+            Grade: {{obj.grade}}<br>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+    </div>
+
+  </mat-tab>
+
+  <mat-tab label="CPU Benchmark">
+    <mat-card class="benchmark">
+      <mat-card-title>Welcome to the Cpu benchmark page!</mat-card-title>
+      <mat-card-content>
+        The following cpus are ordered by their score in our synthetic benchmark. <br>
+        We also display their specifications and the framerate in the benchmark.
+      </mat-card-content>
+    </mat-card>
+    <mat-card *ngFor="let obj of cpuObject" class="benchmark">
+      <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+      <mat-card-content>
+        Framerate: {{obj.score}} FPS<br>
+        Cores: {{obj.cores}} <br>
+        Threads: {{obj.threads}} <br>
+        Clock: {{obj.clock}} GHz<br>
+        Socket: {{obj.socket}} <br>
+        Tdp: {{obj.tdp}} W <br>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+
+  <mat-tab label="GPU Benchmark">
+    <mat-card class="benchmark">
+      <mat-card-title>Welcome to the Gpu benchmark page!</mat-card-title>
+      <mat-card-content>
+        The following gpus are ordered by their score in our synthetic benchmark. <br>
+        We also display their specifications and the framerate in the benchmark.
+      </mat-card-content>
+    </mat-card>
+    <mat-card *ngFor="let obj of gpuObject" class="benchmark">
+      <mat-card-title>{{obj.manufacturer}} {{obj.name}}</mat-card-title>
+      <mat-card-content>
+        Framerate: {{obj.score}} FPS<br>
+        Vram: {{obj.vram}} GB <br>
+        Pci-e: gen{{obj.pciegen}} <br>
+        Tdp: {{obj.tdp}} W <br>
+      </mat-card-content>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

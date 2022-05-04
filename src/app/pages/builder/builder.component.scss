@@ -1,10 +1,17 @@
+div{
+  height: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.grid div{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .main{
   background-image: url("../../../assets/blueprint_bg.png");
   background-repeat: repeat;
-}
-
-mat-select{
-  margin-top: 40%;
 }
 
 .partpicker {

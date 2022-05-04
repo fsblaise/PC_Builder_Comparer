@@ -1,6 +1,7 @@
 export interface Computer{
   id: string;
   userId: string;
+  name: string;
   moboId: string;
   cpuId: string;
   ramId: string;

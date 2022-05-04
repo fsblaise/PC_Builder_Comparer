@@ -55,6 +55,7 @@ import {FormsModule} from "@angular/forms";
     LayoutModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
