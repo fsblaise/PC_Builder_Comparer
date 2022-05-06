@@ -74,7 +74,7 @@ export class ComparatorComponent implements OnInit, OnChanges {
 
 
   async loadUserComputers() {
-    await new Promise(f => setTimeout(f, 3000));
+    await new Promise(f => setTimeout(f, 300));
     this.computerService.getAllByUid(this.authState.uid).subscribe((data: Array<Computer>) => {
       this.userComputerObject = data;
     });

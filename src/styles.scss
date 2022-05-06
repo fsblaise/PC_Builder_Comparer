@@ -265,3 +265,58 @@ $altTheme: (
   margin: auto;
   text-align: center;
 }
+
+.loading-indicator{
+  position: fixed;
+  z-index: 999;
+  height: 1em;
+  width: 1em;
+  overflow: visible;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading-indicator::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.loading-indicator-bar{
+  position: fixed;
+  z-index: 999;
+  overflow: visible;
+  height: 5em;
+  width: 100vw;
+  margin: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loading-indicator-bar mat-progress-bar{
+  height: 2em;
+}
+
+.loading-indicator-bar::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
