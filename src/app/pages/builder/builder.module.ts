@@ -11,17 +11,24 @@ import { ListComponent } from './list/list.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import {MatCardModule} from "@angular/material/card";
 import {ExtendedModule, FlexModule} from "@angular/flex-layout";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatInputModule} from "@angular/material/input";
+import {MatTabsModule} from "@angular/material/tabs";
+import { EditComponent } from './edit/edit.component';
+import { RemoveComponent } from './remove/remove/remove.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
   declarations: [
     BuilderComponent,
     ListComponent,
-    ViewerComponent
+    ViewerComponent,
+    EditComponent,
+    RemoveComponent
   ],
   exports: [
     BuilderComponent
@@ -39,7 +46,11 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     ExtendedModule,
     MatSnackBarModule,
-    MatInputModule
+    MatInputModule,
+    MatTabsModule,
+    MatStepperModule,
+    ReactiveFormsModule,
+    MatProgressBarModule
   ]
 })
 export class BuilderModule { }

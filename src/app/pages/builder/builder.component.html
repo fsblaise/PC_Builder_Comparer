@@ -1,90 +1,66 @@
-<!--<mat-grid-list cols="10" rowHeight="200vh" fxFlexFill fxLayout="column" fxShow.gt-xs="true" fxShow.xs="false">-->
-<!--  <mat-grid-tile colspan="4" class="main" fxFlexAlign="center" style="height: calc(100vh - 24px)">-->
-<!--    <app-viewer [cpuInput]="chosenCpu"-->
-<!--                [moboInput]="chosenMobo"-->
-<!--                [ramInput]="chosenRam"-->
-<!--                [gpuInput]="chosenGpu"-->
-<!--                [psuInput]="chosenPsu"-->
-<!--                [caseInput]="chosenCase"-->
-<!--                [storageInput]="chosenStorage"></app-viewer>-->
-<!--  </mat-grid-tile>-->
-<!--  <mat-grid-tile colspan="6" rowspan="1" fxFlexAlign="center" style="height: calc(100vh - 24px)">-->
-<!--    <app-list [cpuObjectInput]="cpuObject"-->
-<!--              [moboObjectInput]="moboObject"-->
-<!--              [ramObjectInput]="ramObject"-->
-<!--              [gpuObjectInput]="gpuObject"-->
-<!--              [psuObjectInput]="psuObject"-->
-<!--              [caseObjectInput]="caseObject"-->
-<!--              [storageObjectInput]="storageObject"-->
-<!--              (cpuObjectEmitter)="loadCpu($event)"-->
-<!--              (moboObjectEmitter)="loadMobo($event)"-->
-<!--              (ramObjectEmitter)="loadRam($event)"-->
-<!--              (gpuObjectEmitter)="loadGpu($event)"-->
-<!--              (psuObjectEmitter)="loadPsu($event)"-->
-<!--              (caseObjectEmitter)="loadCase($event)"-->
-<!--              (storageObjectEmitter)="loadStorage($event)"></app-list>-->
-<!--  </mat-grid-tile>-->
-<!--</mat-grid-list>-->
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Build" class="tab">
+    <div fxLayout="row" fxLayoutGap="16px" fxShow.lt-sm="false" fxShow.sm="false" fxLayoutAlign="center" class="grid">
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
+        <app-viewer [cpuInput]="chosenCpu"
+                    [moboInput]="chosenMobo"
+                    [ramInput]="chosenRam"
+                    [gpuInput]="chosenGpu"
+                    [psuInput]="chosenPsu"
+                    [caseInput]="chosenCase"
+                    [storageInput]="chosenStorage"></app-viewer>
+      </div>
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center">
+        <app-list [cpuObjectInput]="cpuObject"
+                  [moboObjectInput]="moboObject"
+                  [ramObjectInput]="ramObject"
+                  [gpuObjectInput]="gpuObject"
+                  [psuObjectInput]="psuObject"
+                  [caseObjectInput]="caseObject"
+                  [storageObjectInput]="storageObject"
+                  (cpuObjectEmitter)="loadCpu($event)"
+                  (moboObjectEmitter)="loadMobo($event)"
+                  (ramObjectEmitter)="loadRam($event)"
+                  (gpuObjectEmitter)="loadGpu($event)"
+                  (psuObjectEmitter)="loadPsu($event)"
+                  (caseObjectEmitter)="loadCase($event)"
+                  (storageObjectEmitter)="loadStorage($event)"></app-list>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutGap="16px" fxShow.gt-sm="false" fxLayoutAlign="center" class="grid">
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center">
+        <app-list [cpuObjectInput]="cpuObject"
+                  [moboObjectInput]="moboObject"
+                  [ramObjectInput]="ramObject"
+                  [gpuObjectInput]="gpuObject"
+                  [psuObjectInput]="psuObject"
+                  [caseObjectInput]="caseObject"
+                  [storageObjectInput]="storageObject"
+                  (cpuObjectEmitter)="loadCpu($event)"
+                  (moboObjectEmitter)="loadMobo($event)"
+                  (ramObjectEmitter)="loadRam($event)"
+                  (gpuObjectEmitter)="loadGpu($event)"
+                  (psuObjectEmitter)="loadPsu($event)"
+                  (caseObjectEmitter)="loadCase($event)"
+                  (storageObjectEmitter)="loadStorage($event)"></app-list>
+      </div>
+      <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
+        <app-viewer [cpuInput]="chosenCpu"
+                    [moboInput]="chosenMobo"
+                    [ramInput]="chosenRam"
+                    [gpuInput]="chosenGpu"
+                    [psuInput]="chosenPsu"
+                    [caseInput]="chosenCase"
+                    [storageInput]="chosenStorage"></app-viewer>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Edit">
+    <app-edit></app-edit>
+  </mat-tab>
+  <mat-tab label="Remove">
+    <app-remove></app-remove>
+  </mat-tab>
+</mat-tab-group>
 
-<div fxLayout="row" fxLayoutGap="16px" fxShow.lt-sm="false" fxShow.sm="false" fxLayoutAlign="center" class="grid">
-
-  <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
-    <app-viewer [cpuInput]="chosenCpu"
-                [moboInput]="chosenMobo"
-                [ramInput]="chosenRam"
-                [gpuInput]="chosenGpu"
-                [psuInput]="chosenPsu"
-                [caseInput]="chosenCase"
-                [storageInput]="chosenStorage"></app-viewer>
-  </div>
-
-  <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center">
-    <app-list [cpuObjectInput]="cpuObject"
-              [moboObjectInput]="moboObject"
-              [ramObjectInput]="ramObject"
-              [gpuObjectInput]="gpuObject"
-              [psuObjectInput]="psuObject"
-              [caseObjectInput]="caseObject"
-              [storageObjectInput]="storageObject"
-              (cpuObjectEmitter)="loadCpu($event)"
-              (moboObjectEmitter)="loadMobo($event)"
-              (ramObjectEmitter)="loadRam($event)"
-              (gpuObjectEmitter)="loadGpu($event)"
-              (psuObjectEmitter)="loadPsu($event)"
-              (caseObjectEmitter)="loadCase($event)"
-              (storageObjectEmitter)="loadStorage($event)"></app-list>
-  </div>
-
-</div>
-
-<div fxLayout="column" fxLayoutGap="16px" fxShow.gt-sm="false" fxLayoutAlign="center" class="grid">
-
-  <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center">
-    <app-list [cpuObjectInput]="cpuObject"
-              [moboObjectInput]="moboObject"
-              [ramObjectInput]="ramObject"
-              [gpuObjectInput]="gpuObject"
-              [psuObjectInput]="psuObject"
-              [caseObjectInput]="caseObject"
-              [storageObjectInput]="storageObject"
-              (cpuObjectEmitter)="loadCpu($event)"
-              (moboObjectEmitter)="loadMobo($event)"
-              (ramObjectEmitter)="loadRam($event)"
-              (gpuObjectEmitter)="loadGpu($event)"
-              (psuObjectEmitter)="loadPsu($event)"
-              (caseObjectEmitter)="loadCase($event)"
-              (storageObjectEmitter)="loadStorage($event)"></app-list>
-  </div>
-
-  <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
-    <app-viewer [cpuInput]="chosenCpu"
-                [moboInput]="chosenMobo"
-                [ramInput]="chosenRam"
-                [gpuInput]="chosenGpu"
-                [psuInput]="chosenPsu"
-                [caseInput]="chosenCase"
-                [storageInput]="chosenStorage"></app-viewer>
-  </div>
-
-</div>
 

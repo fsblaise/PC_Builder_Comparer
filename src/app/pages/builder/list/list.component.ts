@@ -173,8 +173,4 @@ export class ListComponent implements OnInit, OnChanges {
       console.error(error);
     });
   }
-
-  delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-  }
 }
