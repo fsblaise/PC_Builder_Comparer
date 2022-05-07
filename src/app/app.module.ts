@@ -11,7 +11,6 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {environment} from "../environments/environment";
-// import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import {provideAuth, getAuth} from '@angular/fire/auth';
 import {provideFirestore, getFirestore} from '@angular/fire/firestore';
 import {provideStorage, getStorage} from '@angular/fire/storage';
@@ -24,8 +23,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
-import { TooltipPipe } from './shared/pipes/tooltip.pipe';
-
 
 @NgModule({
   declarations: [
@@ -45,7 +42,6 @@ import { TooltipPipe } from './shared/pipes/tooltip.pipe';
     FlexLayoutModule,
     MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),

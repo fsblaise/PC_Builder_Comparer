@@ -1,4 +1,9 @@
 <div class="main_component">
+  <mat-card>
+    <mat-card-content>
+      <h1>Register an account!</h1>
+    </mat-card-content>
+  </mat-card>
   <div class="div-flex">
     <mat-stepper orientation="vertical">
         <mat-step [stepControl]="firstFormGroup" errorMessage="You have to enter your email!">
@@ -47,47 +52,11 @@
             </mat-form-field>
             <div>
               <button mat-raised-button matStepperPrevious color="warn">Back</button>
-              <button mat-raised-button (click)="goBack()" color="accent">Back to the dashboard</button>
+              <button mat-raised-button routerLink="/main" color="accent">Back to the dashboard</button>
               <button mat-raised-button type="submit" color="primary">Done</button>
             </div>
           </form>
         </mat-step>
     </mat-stepper>
-
-<!--    <mat-card id="title">-->
-<!--      <mat-card-content><h1>Register an account!</h1></mat-card-content>-->
-<!--    </mat-card>-->
-<!--    <mat-card id="content">-->
-<!--      <mat-card-content>-->
-<!--        <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">-->
-<!--          <mat-form-field>-->
-<!--            <mat-label>Email:</mat-label>-->
-<!--            <input matInput type="text" formControlName="email">-->
-<!--          </mat-form-field>-->
-<!--          <mat-form-field>-->
-<!--            <mat-label>Password:</mat-label>-->
-<!--            <input matInput type="password" formControlName="password">-->
-<!--          </mat-form-field>-->
-<!--          <mat-form-field>-->
-<!--            <mat-label>Confirm password:</mat-label>-->
-<!--            <input matInput type="password" formControlName="repassword">-->
-<!--          </mat-form-field>-->
-<!--          <div formGroupName="name" class="subForm">-->
-<!--            <mat-form-field>-->
-<!--              <mat-label>First name:</mat-label>-->
-<!--              <input matInput type="text" formControlName="firstname">-->
-<!--            </mat-form-field>-->
-<!--            <mat-form-field>-->
-<!--              <mat-label>Last name:</mat-label>-->
-<!--              <input matInput type="text" formControlName="lastname">-->
-<!--            </mat-form-field>-->
-<!--          </div>-->
-<!--          <div>-->
-<!--            <span class="buttons"><button mat-raised-button color="primary" type="submit">Register</button></span>-->
-<!--            <span><button mat-raised-button color="primary" (click)="goBack()">Back</button></span>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </mat-card-content>-->
-<!--    </mat-card>-->
   </div>
 </div>

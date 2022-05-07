@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {Image} from "../../../shared/models/Image";
 import {Case} from "../../../shared/models/Case";
 import {Cpu} from "../../../shared/models/Cpu";
 import {Gpu} from "../../../shared/models/Gpu";
@@ -8,6 +7,7 @@ import {Psu} from "../../../shared/models/Psu";
 import {Ram} from "../../../shared/models/Ram";
 import {Drive} from "../../../shared/models/Drive";
 import {GalleryService} from "../../../shared/services/gallery.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-viewer',
@@ -30,6 +30,7 @@ export class ViewerComponent implements OnInit, OnChanges {
   loadedPsu?: string;
   loadedCase?: string;
   loadedStorage?: string;
+  subscriptions: Array<Subscription> = [];
 
   constructor(private galleryService: GalleryService) {
   }
@@ -39,39 +40,45 @@ export class ViewerComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.cpuInput?.id) {
-      this.galleryService.loadImage(this.cpuInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.cpuInput.imgid).subscribe(data => {
         this.loadedCpu = data;
-      });
+      }));
     }
     if (this.moboInput?.id) {
-      this.galleryService.loadImage(this.moboInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.moboInput.imgid).subscribe(data => {
         this.loadedMobo = data;
-      });
+      }));
     }
     if (this.ramInput?.id) {
-      this.galleryService.loadImage(this.ramInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.ramInput.imgid).subscribe(data => {
         this.loadedRam = data;
-      });
+      }));
     }
     if (this.gpuInput?.id) {
-      this.galleryService.loadImage(this.gpuInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.gpuInput.imgid).subscribe(data => {
         this.loadedGpu = data;
-      });
+      }));
     }
     if (this.psuInput?.id) {
-      this.galleryService.loadImage(this.psuInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.psuInput.imgid).subscribe(data => {
         this.loadedPsu = data;
-      });
+      }));
     }
     if (this.caseInput?.id) {
-      this.galleryService.loadImage(this.caseInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.caseInput.imgid).subscribe(data => {
         this.loadedCase = data;
-      });
+      }));
     }
     if (this.storageInput?.id) {
-      this.galleryService.loadImage(this.storageInput.imgid).subscribe(data => {
+      this.subscriptions.concat(this.galleryService.loadImage(this.storageInput.imgid).subscribe(data => {
         this.loadedStorage = data;
-      });
+      }));
     }
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      if (sub !== null) sub.unsubscribe();
+    });
   }
 }

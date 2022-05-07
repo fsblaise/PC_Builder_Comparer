@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Location} from "@angular/common";
 import {AuthService} from "../../shared/services/auth.service";
 import {User} from "../../shared/models/User";
@@ -18,16 +18,6 @@ import {STEPPER_GLOBAL_OPTIONS} from "@angular/cdk/stepper";
   ],
 })
 export class SignupComponent implements OnInit {
-
-  // signUpForm = new FormGroup({
-  //   email: new FormControl(''),
-  //   password: new FormControl(''),
-  //   repassword: new FormControl(''),
-  //   name: new FormGroup({
-  //     firstname: new FormControl(''),
-  //     lastname: new FormControl('')
-  //   })
-  // })
 
   // @ts-ignore
   firstFormGroup: FormGroup;
@@ -54,7 +44,6 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.signUpForm.value);
     if(this.secondFormGroup.get('passCtrl')?.value === (this.secondFormGroup.get('rePassCtrl')?.value)){
       this.authService.signup(this.firstFormGroup.get('emailCtrl')?.value, this.secondFormGroup.get('passCtrl')?.value).then(cred => {
         console.log(cred);

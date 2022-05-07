@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {Image} from "../../../shared/models/Image";
 import {Cpu} from "../../../shared/models/Cpu";
 import {Mobo} from "../../../shared/models/Mobo";
 import {Ram} from "../../../shared/models/Ram";
@@ -12,6 +11,7 @@ import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {ComputerService} from "../../../shared/services/computer.service";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-list',
@@ -42,20 +42,24 @@ export class ListComponent implements OnInit, OnChanges {
   chosenStorage?: Drive;
   authState: any = null;
   name: any;
+  subscriptions: Array<Subscription> = [];
+  firsttime = true;
 
   constructor(private afs: AngularFirestore, private computerService: ComputerService, private firebaseAuth:AngularFireAuth, private snackBar: MatSnackBar) {
-    this.firebaseAuth.authState.subscribe( authState => {
-      this.authState = authState;
-    });
   }
 
   ngOnInit(): void {
+    this.subscriptions.concat(this.firebaseAuth.authState.subscribe( authState => {
+      this.authState = authState;
+    }));
   }
 
   ngOnChanges(): void {
     if (this.cpuObjectInput){
-      this.chosenCpu = this.cpuObjectInput[0];
-      this.reload();
+      if(!this.firsttime){
+        this.chosenCpu = this.cpuObjectInput[0];
+        this.reload();
+      }
       return;
     }
     if (this.moboObjectInput){
@@ -91,7 +95,9 @@ export class ListComponent implements OnInit, OnChanges {
   }
 
   reload() {
-    this.cpuObjectEmitter.emit(this.chosenCpu);
+    //if(!this.firsttime)
+      this.cpuObjectEmitter.emit(this.chosenCpu);
+    this.firsttime = false;
   }
   reload2() {
     this.moboObjectEmitter.emit(this.chosenMobo);
@@ -168,9 +174,16 @@ export class ListComponent implements OnInit, OnChanges {
     this.computerService.create(computer).then(_ => {
       console.log('Computer added successfully!');
       this.snackBar.open('Computer added successfully!','',{duration: 3000, panelClass: 'center'});
+      this.ngOnDestroy();
       // alert('Computer added successfully!');
     }).catch(error => {
       console.error(error);
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      if (sub !== null) sub.unsubscribe();
     });
   }
 }
