@@ -3,7 +3,7 @@ import {Image} from "./Image";
 export interface Mobo extends Image{
   id: string;
   imgid: string;
-  typo: 'mobo'
+  typo: string;
   manufacturer: string;
   name: string;
   form: string;

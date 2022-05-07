@@ -3,7 +3,7 @@ import {Image} from "./Image";
 export interface Cpu extends Image{
   id: string;
   imgid: string;
-  typo: 'cpu'
+  typo: string;
   name: string;
   manufacturer: string;
   socket: string;

@@ -3,13 +3,23 @@
 </span>
 
 <div class="main_component">
-  <h1>Welcome to my homepage!</h1>
-  <mat-form-field><mat-label for="email">Email: </mat-label><input matInput id="email" type="text" [formControl]="email"></mat-form-field>
-  <mat-form-field><mat-label for="password">Password: </mat-label><input matInput id="password" type="password" [formControl]="password"></mat-form-field>
-  <span>
-    <span><button mat-raised-button color="primary" (click)="login() ">Login</button></span>
-    <span><button mat-raised-button color="primary" [routerLink]="'/signup'">Sign Up</button></span>
-  </span>
-<!--  asyncpipe-->
-<!--  <p>{{loadingObservation | async}}</p>-->
+  <mat-card id="title">
+    <mat-card-content><h1>Log in to the website!</h1></mat-card-content>
+  </mat-card>
+  <mat-card id="content">
+    <mat-card-content>
+      <div class="form">
+        <mat-form-field>
+          <mat-label for="email">Email:</mat-label>
+          <input matInput id="email" type="text" [formControl]="email"></mat-form-field>
+        <mat-form-field>
+          <mat-label for="password">Password:</mat-label>
+          <input matInput id="password" type="password" [formControl]="password"></mat-form-field>
+        <span id="buttons">
+        <span><button mat-raised-button color="primary" (click)="login() ">Login</button></span>
+        <span><button mat-raised-button color="warn" [routerLink]="'/signup'">Sign Up</button></span>
+      </span>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

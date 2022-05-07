@@ -3,7 +3,7 @@ import {Image} from "./Image";
 export interface Drive extends Image{
   id: string;
   imgid: string;
-  typo: 'drive'
+  typo: string;
   name: string;
   manufacturer: string;
   type: string;

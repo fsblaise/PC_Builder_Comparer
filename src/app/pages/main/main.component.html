@@ -1,9 +1,4 @@
 <div class="grid-container">
-  <mat-toolbar color="primary">
-    <a mat-list-item>
-      <span>Dashboard</span>
-    </a>
-  </mat-toolbar>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows" [routerLink]="card.path">
       <mat-card class="dashboard-card">

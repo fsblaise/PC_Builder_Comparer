@@ -1,37 +1,37 @@
 <mat-grid-list cols="1">
   <div>
-    <img *ngIf="cpuInput; else cpuplaceholder" [src]="loadedCpu" alt="Picture of the product">
+    <img *ngIf="cpuInput; else cpuplaceholder" [src]="loadedCpu" alt="Picture of the product" [matTooltip]="cpuInput | tooltip">
     <ng-template #cpuplaceholder>
       <img src="assets/cpu.png" alt="Processor placeholder">
     </ng-template>
-    <img *ngIf="moboInput; else moboplaceholder" [src]="loadedMobo" alt="Picture of the product">
+    <img *ngIf="moboInput; else moboplaceholder" [src]="loadedMobo" alt="Picture of the product" [matTooltip]="moboInput | tooltip">
     <ng-template #moboplaceholder>
       <img src="assets/mobo.png" alt="Motherboard placeholder">
     </ng-template>
   </div>
   <div>
-    <img *ngIf="gpuInput; else gpuplaceholder" [src]="loadedGpu" alt="Picture of the product">
+    <img *ngIf="gpuInput; else gpuplaceholder" [src]="loadedGpu" alt="Picture of the product" [matTooltip]="gpuInput | tooltip">
     <ng-template #gpuplaceholder>
       <img src="assets/gpu.png" alt="Graphics card placeholder">
     </ng-template>
   </div>
 
   <div>
-    <img *ngIf="storageInput; else driveplaceholder" [src]="loadedStorage" alt="Picture of the product">
+    <img *ngIf="storageInput; else driveplaceholder" [src]="loadedStorage" alt="Picture of the product" [matTooltip]="storageInput | tooltip">
     <ng-template #driveplaceholder>
       <img src="assets/ssd.png" alt="Drive placeholder">
     </ng-template>
-    <img *ngIf="ramInput; else ramplaceholder" [src]="loadedRam" alt="Picture of the product">
+    <img *ngIf="ramInput; else ramplaceholder" [src]="loadedRam" alt="Picture of the product" [matTooltip]="ramInput | tooltip">
     <ng-template #ramplaceholder>
       <img src="assets/ram.png" alt="Ram placeholder">
     </ng-template>
   </div>
   <div>
-    <img *ngIf="psuInput; else psuplaceholder" [src]="loadedPsu" alt="Picture of the product">
+    <img *ngIf="psuInput; else psuplaceholder" [src]="loadedPsu" alt="Picture of the product" [matTooltip]="psuInput | tooltip">
     <ng-template #psuplaceholder>
       <img src="assets/psu.png" alt="Power supply placeholder">
     </ng-template>
-    <img *ngIf="caseInput; else caseplaceholder" [src]="loadedCase" alt="Picture of the product">
+    <img *ngIf="caseInput; else caseplaceholder" [src]="loadedCase" alt="Picture of the product" [matTooltip]="caseInput | tooltip">
     <ng-template #caseplaceholder>
       <img src="assets/case.png" alt="Pc case placeholder">
     </ng-template>

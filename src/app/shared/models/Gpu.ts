@@ -3,7 +3,7 @@ import {Image} from "./Image";
 export interface Gpu extends Image{
   id: string;
   imgid: string;
-  typo: 'gpu'
+  typo: string;
   name: string;
   manufacturer: string;
   pciegen: number;
