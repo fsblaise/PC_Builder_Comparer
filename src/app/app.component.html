@@ -21,6 +21,19 @@
         </ul>
       </div>
     </mat-toolbar>
+    <mat-toolbar color="primary" *ngIf="isUserOnMain()">
+      <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav(sidenav)">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div>Dashboard</div>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+          <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
+    </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

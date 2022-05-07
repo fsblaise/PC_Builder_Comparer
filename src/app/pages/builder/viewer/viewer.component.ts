@@ -16,13 +16,13 @@ import {GalleryService} from "../../../shared/services/gallery.service";
 })
 export class ViewerComponent implements OnInit, OnChanges {
 
-  @Input() cpuInput?: any;
-  @Input() moboInput?: any;
-  @Input() ramInput?: any;
-  @Input() gpuInput?: any;
-  @Input() psuInput?: any;
-  @Input() caseInput?: any;
-  @Input() storageInput?: any;
+  @Input() cpuInput?: Cpu;
+  @Input() moboInput?: Mobo;
+  @Input() ramInput?: Ram;
+  @Input() gpuInput?: Gpu;
+  @Input() psuInput?: Psu;
+  @Input() caseInput?: Case;
+  @Input() storageInput?: Drive;
   loadedCpu?: string;
   loadedMobo?: string;
   loadedRam?: string;

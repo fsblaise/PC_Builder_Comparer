@@ -1,4 +1,4 @@
-<mat-tab-group mat-align-tabs="center">
+<mat-tab-group mat-align-tabs="center" style="height: 100%; top:0;bottom:0" dynamicHeight>
   <mat-tab label="Build" class="tab">
     <div fxLayout="row" fxLayoutGap="16px" fxShow.lt-sm="false" fxShow.sm="false" fxLayoutAlign="center" class="grid">
       <div fxFlex.gt-sm="50%" fxFlex fxLayoutAlign="center" class="main">
@@ -58,8 +58,8 @@
   <mat-tab label="Edit">
     <app-edit></app-edit>
   </mat-tab>
-  <mat-tab label="Remove">
-    <app-remove></app-remove>
+  <mat-tab label="Remove" style="height: 100%">
+    <app-remove style="height: 100%"></app-remove>
   </mat-tab>
 </mat-tab-group>
 

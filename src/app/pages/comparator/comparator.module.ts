@@ -16,6 +16,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {AppModule} from "../../app.module";
 import {BuilderComponent} from "../builder/builder.component";
 import {MatRippleModule} from "@angular/material/core";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -24,20 +25,21 @@ import {MatRippleModule} from "@angular/material/core";
   exports: [
     ComparatorComponent
   ],
-  imports: [
-    CommonModule,
-    ComparatorRoutingModule,
-    MatTabsModule,
-    MatTableModule,
-    MatGridListModule,
-    MatCardModule,
-    FlexLayoutModule,
-    MatSelectModule,
-    MatButtonModule,
-    FormsModule,
-    MatListModule,
-    MatSnackBarModule,
-    MatRippleModule
-  ]
+    imports: [
+        CommonModule,
+        ComparatorRoutingModule,
+        MatTabsModule,
+        MatTableModule,
+        MatGridListModule,
+        MatCardModule,
+        FlexLayoutModule,
+        MatSelectModule,
+        MatButtonModule,
+        FormsModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatRippleModule,
+        MatProgressSpinnerModule
+    ]
 })
 export class ComparatorModule { }

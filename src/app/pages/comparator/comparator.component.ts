@@ -47,6 +47,7 @@ export class ComparatorComponent implements OnInit, OnChanges {
   otherComputerSet: Set<any>;
   authState: any;
   id: any;
+  loading: boolean = false;
   @Output() computerObjectEmitter: EventEmitter<Computer> = new EventEmitter<Computer>();
   @Output() userComputerObjectEmitter: EventEmitter<Computer> = new EventEmitter<Computer>();
   chosenComputer?: Computer;
@@ -74,10 +75,12 @@ export class ComparatorComponent implements OnInit, OnChanges {
 
 
   async loadUserComputers() {
+    this.loading = true;
     await new Promise(f => setTimeout(f, 300));
     this.computerService.getAllByUid(this.authState.uid).subscribe((data: Array<Computer>) => {
       this.userComputerObject = data;
     });
+    this.loading = false;
   }
 
   ngOnChanges(): void {

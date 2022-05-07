@@ -24,6 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { TooltipPipe } from './shared/pipes/tooltip.pipe';
 
 
 @NgModule({
@@ -55,7 +56,6 @@ import {FormsModule} from "@angular/forms";
     LayoutModule
   ],
   providers: [],
-  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

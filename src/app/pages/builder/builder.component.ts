@@ -23,13 +23,13 @@ export class BuilderComponent implements OnInit {
   gpuObject?: Array<Gpu>;
   psuObject?: Array<Psu>;
   storageObject?: Array<Drive>;
-  chosenCpu?: any;
-  chosenMobo?: any;
-  chosenRam?: any;
-  chosenGpu?: any;
-  chosenPsu?: any;
-  chosenCase?: any;
-  chosenStorage?: any;
+  chosenCpu?: Cpu;
+  chosenMobo?: Mobo;
+  chosenRam?: Ram;
+  chosenGpu?: Gpu;
+  chosenPsu?: Psu;
+  chosenCase?: Case;
+  chosenStorage?: Drive;
 
   constructor(private galleryService: GalleryService) { }
 
@@ -78,4 +78,5 @@ export class BuilderComponent implements OnInit {
   loadStorage(imageObject: Drive) {
     this.chosenStorage = imageObject;
   }
+
 }

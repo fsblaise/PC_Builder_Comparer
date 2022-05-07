@@ -17,9 +17,14 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatInputModule} from "@angular/material/input";
 import {MatTabsModule} from "@angular/material/tabs";
 import { EditComponent } from './edit/edit.component';
-import { RemoveComponent } from './remove/remove/remove.component';
+import {ConfirmDialog, RemoveComponent} from './remove/remove.component';
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatIconModule} from "@angular/material/icon";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {TooltipPipe} from "../../shared/pipes/tooltip.pipe";
 
 
 @NgModule({
@@ -28,7 +33,9 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     ListComponent,
     ViewerComponent,
     EditComponent,
-    RemoveComponent
+    RemoveComponent,
+    ConfirmDialog,
+    TooltipPipe
   ],
   exports: [
     BuilderComponent
@@ -50,7 +57,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatTabsModule,
     MatStepperModule,
     ReactiveFormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatChipsModule,
+    MatIconModule,
+    MatDialogModule,
+    MatTooltipModule
   ]
 })
 export class BuilderModule { }
