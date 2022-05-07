@@ -11,7 +11,7 @@ import {Ram} from "../../shared/models/Ram";
 import {Psu} from "../../shared/models/Psu";
 import {Case} from "../../shared/models/Case";
 import {Drive} from "../../shared/models/Drive";
-import {Image} from "../../shared/models/Image";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-comparator',
@@ -48,6 +48,7 @@ export class ComparatorComponent implements OnInit, OnChanges {
   authState: any;
   id: any;
   loading: boolean = false;
+  subscriptions: Array<Subscription> = [];
   @Output() computerObjectEmitter: EventEmitter<Computer> = new EventEmitter<Computer>();
   @Output() userComputerObjectEmitter: EventEmitter<Computer> = new EventEmitter<Computer>();
   chosenComputer?: Computer;
@@ -58,29 +59,23 @@ export class ComparatorComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.componentService.getAllCpusOrdered().subscribe((data: Array<Cpu>) => {
-      this.cpuObject = data;
-    });
-    this.componentService.getAllGpusOrdered().subscribe((data: Array<Gpu>) => {
-      this.gpuObject = data;
-    });
-    this.computerService.getAll().subscribe((data: Array<Computer>) => {
-      this.computerObject = data;
-    });
-    this.firebaseAuth.authState.subscribe(authState => {
-      this.authState = authState;
-    });
-    this.loadUserComputers();
-  }
-
-
-  async loadUserComputers() {
     this.loading = true;
-    await new Promise(f => setTimeout(f, 300));
-    this.computerService.getAllByUid(this.authState.uid).subscribe((data: Array<Computer>) => {
-      this.userComputerObject = data;
-    });
-    this.loading = false;
+    Promise.all([this.subscriptions.concat(this.componentService.getAllCpusOrdered().subscribe((data: Array<Cpu>) => {
+      this.cpuObject = data;
+    })),
+      this.subscriptions.concat(this.componentService.getAllGpusOrdered().subscribe((data: Array<Gpu>) => {
+        this.gpuObject = data;
+      })),
+      this.subscriptions.concat(this.computerService.getAll().subscribe((data: Array<Computer>) => {
+        this.computerObject = data;
+      })),
+      this.subscriptions.concat(this.firebaseAuth.authState.subscribe(authState => {
+        this.authState = authState;
+        this.subscriptions.concat(this.computerService.getAllByUid(this.authState.uid).subscribe((data: Array<Computer>) => {
+          this.userComputerObject = data;
+          this.loading = false;
+        }));
+      }))]).finally(() => this.loading = false);
   }
 
   ngOnChanges(): void {
@@ -118,62 +113,69 @@ export class ComparatorComponent implements OnInit, OnChanges {
       this.relation = 'equal'
     }
 
-    this.componentService.getCpuById(this.chosenComputer.cpuId).subscribe((data: any) => {
+    this.subscriptions.concat(this.componentService.getCpuById(this.chosenComputer.cpuId).subscribe((data: any) => {
       this.cpu = data;
       this.otherComputer[0] = this.cpu;
-    });
-    this.componentService.getMoboById(this.chosenComputer.moboId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getMoboById(this.chosenComputer.moboId).subscribe((data: any) => {
       this.mobo = data;
       this.otherComputer[1] = this.mobo;
-    });
-    this.componentService.getRamById(this.chosenComputer.ramId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getRamById(this.chosenComputer.ramId).subscribe((data: any) => {
       this.ram = data;
       this.otherComputer[2] = this.ram;
-    });
-    this.componentService.getGpuById(this.chosenComputer.gpuId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getGpuById(this.chosenComputer.gpuId).subscribe((data: any) => {
       this.gpu = data;
       this.otherComputer[3] = this.gpu;
-    });
-    this.componentService.getPsuById(this.chosenComputer.psuId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getPsuById(this.chosenComputer.psuId).subscribe((data: any) => {
       this.psu = data;
       this.otherComputer[4] = this.psu;
-    });
-    this.componentService.getCaseById(this.chosenComputer.caseId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getCaseById(this.chosenComputer.caseId).subscribe((data: any) => {
       this.case = data;
       this.otherComputer[5] = this.case;
-    });
-    this.componentService.getStorageById(this.chosenComputer.storageId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getStorageById(this.chosenComputer.storageId).subscribe((data: any) => {
       this.drive = data;
       this.otherComputer[6] = this.drive;
-    });
+    }));
 
-    this.componentService.getUserCpuById(this.chosenUserComputer.cpuId).subscribe((data: any) => {
+    this.subscriptions.concat(this.componentService.getUserCpuById(this.chosenUserComputer.cpuId).subscribe((data: any) => {
       this.userCpu = data;
       this.userComputer[0] = this.userCpu;
-    });
-    this.componentService.getUserMoboById(this.chosenUserComputer.moboId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getUserMoboById(this.chosenUserComputer.moboId).subscribe((data: any) => {
       this.userMobo = data;
       this.userComputer[1] = this.userMobo;
-    });
-    this.componentService.getUserRamById(this.chosenUserComputer.ramId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getUserRamById(this.chosenUserComputer.ramId).subscribe((data: any) => {
       this.userRam = data;
       this.userComputer[2] = this.userRam;
-    });
-    this.componentService.getUserGpuById(this.chosenUserComputer.gpuId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getUserGpuById(this.chosenUserComputer.gpuId).subscribe((data: any) => {
       this.userGpu = data;
       this.userComputer[3] = this.userGpu;
-    });
-    this.componentService.getUserPsuById(this.chosenUserComputer.psuId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getUserPsuById(this.chosenUserComputer.psuId).subscribe((data: any) => {
       this.userPsu = data;
       this.userComputer[4] = this.userPsu;
-    });
-    this.componentService.getUserCaseById(this.chosenUserComputer.caseId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getUserCaseById(this.chosenUserComputer.caseId).subscribe((data: any) => {
       this.userCase = data;
       this.userComputer[5] = this.userCase;
-    });
-    this.componentService.getUserStorageById(this.chosenUserComputer.storageId).subscribe((data: any) => {
+    }));
+    this.subscriptions.concat(this.componentService.getUserStorageById(this.chosenUserComputer.storageId).subscribe((data: any) => {
       this.userDrive = data;
       this.userComputer[6] = this.userDrive;
+    }));
+    this.ngOnDestroy();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      if (sub !== null) sub.unsubscribe();
     });
   }
 }

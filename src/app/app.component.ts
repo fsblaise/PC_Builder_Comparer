@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {filter} from "rxjs";
+import {filter, Subscription} from "rxjs";
 import {AuthService} from "./shared/services/auth.service";
 import {NavigationEnd, Router} from "@angular/router";
 import {MatSidenav} from "@angular/material/sidenav";
@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'PCBuilder';
   page = '';
   loggedInUser?: firebase.default.User | null;
+  subscriptions: Array<Subscription> = [];
 
   routes: Array<string> = [];
 
@@ -25,19 +26,19 @@ export class AppComponent implements OnInit {
 
     // rxjs - reaktiv programozas
     // subscribe
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((evts: any) => {
+    this.subscriptions.concat(this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((evts: any) => {
       const currentPage = (evts.urlAfterRedirects as string).split('/')[1] as string;
       if (this.routes.includes(currentPage))
         this.page = currentPage;
-    });
-    this.authService.isUserLoggedIn().subscribe(user => {
+    }));
+    this.subscriptions.concat(this.authService.isUserLoggedIn().subscribe(user => {
       console.log(user);
       this.loggedInUser = user;
       localStorage.setItem('user', JSON.stringify(this.loggedInUser));
     }, error => {
       console.error(error);
       localStorage.setItem('user', JSON.stringify('null'));
-    });
+    }));
   }
 
   isUserOnMain(){
@@ -64,6 +65,12 @@ export class AppComponent implements OnInit {
       console.log('Logged out successfully!');
     }).catch(error => {
       console.log(error);
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => {
+      if (sub !== null) sub.unsubscribe();
     });
   }
 }
