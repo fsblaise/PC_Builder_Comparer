@@ -4,6 +4,7 @@
 
 .dashboard-card {
   position: absolute;
+  margin: auto;
   top: 15px;
   left: 15px;
   right: 15px;
@@ -11,6 +12,11 @@
 }
 
 .dashboard-card-content {
+  //display: inline-block;
+  //vertical-align: middle;
+
+  margin: auto !important;
+  padding: 5%;
    /*this makes the image in src fit to the size specified below*/
   //width: 60%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
   //height: 15vw;
@@ -18,4 +24,8 @@
 
 .dashboard-card:hover{
   background-color: lightgray;
+}
+
+#banners{
+  margin: auto;
 }

@@ -3,10 +3,6 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 100%;
-}
-
-.main_component {
   height: 100vh;
 }
 
@@ -25,12 +21,8 @@ form {
   display: inline-grid;
 }
 
-.buttons {
-  padding: 5px;
-}
-
 button{
-  margin: 0 1%;
+  margin: 2% 1%;
 }
 
 #title{

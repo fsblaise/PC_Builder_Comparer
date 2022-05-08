@@ -17,7 +17,7 @@ export class MainComponent implements OnInit{
           { title: 'Log in', cols: 1, rows: 1, pic: 'loginbutton.png', path: "/login" },
           { title: 'Builder', cols: 1, rows: 1, pic: 'PC-building.png', path: "/builder" },
           { title: 'Register', cols: 1, rows: 1, pic: 'registerbutton.png', path: "/signup" },
-          { title: 'Comparator', cols: 1, rows: 1, pic: 'pcversusbanner.png', path: "/comparator" }
+          { title: 'Comparator', cols: 1, rows: 1, pic: 'comparator.png', path: "/comparator" }
         ];
       }
 
