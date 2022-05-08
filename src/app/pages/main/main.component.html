@@ -1,13 +1,13 @@
 <div class="grid-container">
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows" [routerLink]="card.path">
-      <mat-card class="dashboard-card">
-        <mat-card-header style="margin: 10px">
+      <mat-card class="dashboard-card" fxLayout="column">
+        <mat-card-header >
           <mat-card-title>
             {{card.title}}
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <mat-card-content class="dashboard-card-content">
           <div id="banners">
             <img mat-card-image [src]="'../../../assets/' + card.pic" >
           </div>
@@ -16,3 +16,5 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+

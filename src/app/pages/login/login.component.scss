@@ -1,14 +1,9 @@
-.main_component {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+.main_component{
   height: 100vh;
 }
 
 .form{
   display: inline-grid;
-  width: 40%;
   align-self: center;
 }
 
@@ -17,21 +12,21 @@ span {
 }
 
 #title{
-  margin-right: auto;
-  margin-left: auto;
   width: 40%;
-  margin-bottom: 5%;
+  margin: 5% auto;
+  padding: 2% 5%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 #content{
+  display: flex;
+  justify-content: center;
   margin-right: auto;
   margin-left: auto;
+  padding: 5% 5%;
   width: 40%;
-  padding: 5% 0;
-}
-
-.form span{
-  padding: 10% 7%;
 }
 
 
