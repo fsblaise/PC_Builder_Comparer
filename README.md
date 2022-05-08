@@ -2,6 +2,15 @@
 
 Valamiért a hostolt oldalon a legalsó kép kilóg első betöltésre a main oldalon. Ha frissíted az oldalt, akkor helyreáll.
 
+
+
+
+
+
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## Development server
