@@ -1,9 +1,6 @@
 # PCBuilder
 
-Valamiért a hostolt oldalon a legalsó kép kilóg első betöltésre a main oldalon. Ha frissíted az oldalt, akkor helyreáll.
-
-
-
+This is just the source code. The actual hosted webpage is located at: https://pcbuilder-comparer.web.app/main
 
 
 
