@@ -9,5 +9,5 @@ It also features complete C.R.U.D. functions for the PC building part.
 
 ## Technical details
 
-The project was built using Angular 13.2.5., Angular Material 13.3.5 and Angular Fire 7.3.0.
+The project was built using Angular 13.2.5., Angular Material 13.3.5, Angular Flex Layout 13.0.0-beta.38 and Angular Fire 7.3.0.
 The actual hosted webpage is located at: https://pcbuilder-comparer.web.app/main.
